@@ -1,0 +1,14 @@
+ul, a{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: none;
+  list-style-type: none;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+}
+a:hover{
+  color: #AACD06;
+}
+.link-solution {
+ color: bisque;
+}
