@@ -69,6 +69,7 @@ yarn-error.log*
 *.mp3
 *.mp4
 *.txt
+*.pdf
 
 ### Node ###
 # Logs
