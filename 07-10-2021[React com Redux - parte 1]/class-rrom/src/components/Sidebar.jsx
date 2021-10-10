@@ -6,29 +6,33 @@ export class Sidebar extends Component {
   render() {
     const {categoriesState, selectMovieState} = this.props;
     return (
-      <aside>
+      <aside  className="parent">
                 {categoriesState.map((category)=>(
-                    <div key={category.id}>
-                      <h3>{category.name}</h3>
-                      <ul>
-                        {category.movies.map((movie)=>(
-                            <li key={movie.id}>
-                          {movie.title}
-                            {' '}
-                            was released in 
-                            {' '}
-                          {movie.released}
-                            <button
-                            className='btn-select'
-                            type="button"
-                            onClick={ () =>  selectMovieState(movie, category ) }
-                            >
-                              select
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                          <>
+                                <h2>{category.name}</h2>
+                                <div key={category.id} >
+                                <ul>
+                                  {category.movies.map((movie)=>(
+                                      <li key={movie.id}>
+                                    {movie.title}
+                                      {' '}
+                                      was released in 
+                                      {' '}
+                                    {movie.released}
+                                    <div className="container">
+                                        <button
+                                        className='btn-select'
+                                        type="button"
+                                        onClick={ () =>  selectMovieState(movie, category ) }
+                                        >
+                                          select
+                                        </button>
+                                        </div>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                        </>
             ))}
       </aside>
     )
