@@ -4,7 +4,7 @@ export class Player extends Component {
   render() {
     const {selectedMovieState, selectedCategoryState} = this.props;
     return (
-      <div>
+      <div className="player">
         <h1>{selectedMovieState.title}</h1>
         <h3>
         {selectedCategoryState.name}
@@ -17,8 +17,8 @@ export class Player extends Component {
             <iframe 
             src={selectedMovieState.link}
             title="trailer"
-            width="320"
-            height="215"
+            width="520"
+            height="315"
             />
           </section>
       </div>
