@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 export class Player extends Component {
   render() {
-    const {selectedMovieState, selectedCategoryState} = this.props;
+    const {selectedMovieState, selectedCategoryState} = this.props; //Acessando o estado global
     return (
       <div className="player">
         <h1>{selectedMovieState.title}</h1>
@@ -26,10 +26,11 @@ export class Player extends Component {
   }
 }
 
-const mapStateToProps =(state)=>({
+//mapStateToProps Acessa o estado da aplicação via props
+const mapStateToProps = (state) =>  ({
   selectedMovieState: state.movies.selectedMovie,
   selectedCategoryState: state.movies.selectedCategory ,
-    //esse movies foi criado no reducer e categories está no inicial_state(state) do reducer
+    //esse movies foi criado no reducer, ele é o estado global
 });
 
 export default connect(mapStateToProps)(Player);

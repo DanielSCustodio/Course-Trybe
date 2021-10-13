@@ -11,7 +11,7 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <Provider store={store}>
+        <Provider store={store}>  {/*O provider vai prover o acesso dos estados global para todos os componentes que estiverem aninhados dentro dele, através da store que ele recebe */}
           <Header/>
           <main class="main">
             <Player/>
