@@ -6,7 +6,7 @@ export class Header extends Component {
       <header className="Header">   
         <span>Trybeflix</span>  
     <div className="user">
-        <img src={avatar}alt="alt"  width="50" height="50"/>
+        <img src={avatar}alt="alt"  width="30" height="30"/>
         <span>Daniel</span>
       </div>
       </header>
