@@ -1,5 +1,5 @@
 const ISS_BASE_API = 'http://api.open-notify.org';
-
+//mudar para async wait
 export const getCurrentISSLocation = () => (
   fetch(`${ISS_BASE_API}/iss-now.json`)
     .then((response) => (
@@ -9,6 +9,7 @@ export const getCurrentISSLocation = () => (
     ))
 );
 
+//mudar para async wait
 export const getCurrentISSCrew = () => (
   fetch(`${ISS_BASE_API}/astros.json`)
     .then((answer) => (
