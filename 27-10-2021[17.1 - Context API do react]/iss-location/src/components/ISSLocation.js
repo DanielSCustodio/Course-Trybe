@@ -14,31 +14,28 @@ class ISSLocation extends Component {
   }
 
   render() {
+    const { latitude, longitude } = this.context;
     return (
-      <contextISS.Consumer>
-        {({ latitude, longitude }) => ( // Destrturação dos valores do provider(state)
-          <main>
-            <div className="map">
-              <Map
-                center={ [0, 0] }
-                defaultWidth={ 450 }
-                height={ 450 }
-                minZoom={ 1.5 }
-                maxZoom={ 20 }
-                zoom={ 1.5 }
-              >
-                <Marker anchor={ [latitude, longitude] } />
-              </Map>
-              <div className="map-crew">
-                <ISSCrew />
-              </div>
-            </div>
-            <Coordinates latitude={ latitude } longitude={ longitude } />
-          </main>
-        )}
-      </contextISS.Consumer>
+      <main>
+        <div className="map">
+          <Map
+            center={ [0, 0] }
+            defaultWidth={ 450 }
+            height={ 450 }
+            minZoom={ 1.5 }
+            maxZoom={ 20 }
+            zoom={ 1.5 }
+          >
+            <Marker anchor={ [latitude, longitude] } />
+          </Map>
+          <div className="map-crew">
+            <ISSCrew />
+          </div>
+        </div>
+        <Coordinates latitude={ latitude } longitude={ longitude } />
+      </main>
     );
   }
 }
-
+ISSLocation.contextType = contextISS;
 export default ISSLocation;
