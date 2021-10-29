@@ -7,14 +7,15 @@ import contextISS from '../context/contextISS';
 
 class ISSLocation extends Component {
   componentDidMount() {
+    const { getISSLocation } = this.context;
     const ONE_SECOND = 1000;
     setInterval(() => {
-      // chamda da API
+      getISSLocation();
     }, ONE_SECOND);
   }
 
   render() {
-    const { latitude, longitude } = this.context;
+    const { latitude, longitude } = this.context; // Só consigo o contexto principal aqui, mas posso usar outros contextos no componente através do consumer Ex: <OutroContexto.Consumer>
     return (
       <main>
         <div className="map">
