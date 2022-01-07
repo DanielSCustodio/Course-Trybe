@@ -43,7 +43,7 @@ create table Livro (
     autor_id int not null,
     categoria_id int not null,
     foreign key (autor_id) references Autor(autor_id),
-    foreign key (categoria_id) references categoria(categoria_id)
+    foreign key (categoria_id) references Categoria(categoria_id)
 );
 
 create table Historico(
