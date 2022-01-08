@@ -1,0 +1,138 @@
+------------------Constraints (restrições), chaves primárias e chaves estrangeiras
+
+NOT NULL - Garante que aquele campo não pode conter valores nulos , ou seja, se não houver um valor padrão ( DEFAULT ) definido, será sempre necessário passar um valor para esse campo durante um INSERT , por exemplo.
+
+UNIQUE - Garante que o valor inserido na coluna da tabela é único , isto é, não pode haver outro valor igual para esta coluna registrado nesta tabela.
+
+PRIMARY KEY - A chave primária de uma tabela garante que a coluna em que essa constraint está sendo aplicada é o identificador único da tabela . Ela também é, por definição, não nula (mesmo efeito da constraint NOT NULL ) e única (mesmo efeito da constraint UNIQUE ).
+
+FOREIGN KEY - A chave estrangeira de uma tabela faz referência a uma chave primária (valor em uma coluna com a constraint PRIMARY KEY ) de outra tabela , permitindo um relacionamento entre as duas.
+
+DEFAULT - Garante que, caso nenhum valor seja inserido na coluna (ou caso a pessoa usuária insira um valor nulo), a constraint colocará o valor padrão que for passado para ela .
+
+-----------------DDL : Data Definition Language - todos os comandos que lidam com o esquema, a descrição e o modo como os dados devem existir em um banco de dados
+
+CREATE : Para criar bancos de dados, tabelas, índices, views, procedures, functions e triggers
+
+ALTER : Para alterar a estrutura de qualquer objeto
+
+DROP : Permite deletar objetos, exclui a tabela em si
+
+TRUNCATE : funciona como delete e reseta a tabela, por exemplo, o id é iniciado novamente
+
+----------------DML : Data Manipulation Language - Comandos que são usados para manipular dados. São utilizados para armazenar, modificar, buscar e excluir dados em um banco de dados. Os comandos e usos mais comuns nesta categoria são:
+
+SELECT : usado para buscar dados em um banco de dados
+
+INSERT  INTO: insere dados em uma tabela
+
+INSERT IGNORE INTO =  insere dados em uma tabela ignorando possivesis erros no percorrer da execução da query
+
+UPDATE : altera dados dentro de uma tabela
+SET  SQL_SAFE_UPDATES = 0; = desativa o modo de proteção, podendo agora fazer update sem WHERE
+
+DELETE : exclui dados de uma tabela
+
+----------------DCL : Data Control Language - Focado mais nos comandos que concedem direitos, permissões e outros tipos de controle ao sistema de banco de dados.
+
+GRANT : concede acesso a um usuário
+
+REVOKE : remove acessos concedidos através do comando GRANT
+
+------------TCL : Transactional Control Language - Lida com as transações dentro de suas pesquisas.
+COMMIT : muda suas alterações de temporárias para permanentes no seu banco de dados
+
+ROLLBACK : desfaz todo o impacto realizado por um comando
+
+SAVEPOINT : define pontos para os quais uma transação pode voltar. É uma maneira de voltar para pontos específicos de sua query
+
+TRANSACTION : comandos que definem onde, como e em que escopo suas transações são executadas
+
+_______________________________________________________________
+
+----------------Funções
+SELECT *FROM nomeBanco.nomeTabela = para selecionar um tabela
+DISTINCT  = Retona o resultado sem excluindo os dados repetidos (Busca de informaçãoes que não se repetem).
+LIMIT = determina um intervalo de dados a ser recuperado da tabela;
+OFFSET = Número de dados  a ser pulado antes de começar o intervalo do LIMIT
+COUNT = Devolve o  número de linhas de uma query(Não conta nulls)
+COALESCE = usado para dar um valor para campos que são null, e assim poder ser contabilizado no COUNT/AVG/SUM como valores não nulos.
+ORDERBY=	 ordena os dados na tabela de acordo com as colunas escolhidas como parametro para o ORDERBY
+WHERE = Filtra linhas da tabela usando algum campo especifico, retornando somente as informações que atendem ao filtro.
+LIKE =  Para fazer busca em campos que utilizam string
+% = não interessa o que vem antes ou depois
+_ = retorna os dados que contem o numero de caracteres representado pela quantidade de vezes que o underline é repetido.
+IN =  Filtra linhas da tabela usando valores de um campo especifico retornando as informações que atendem ao filtro , funciona como o OR.
+NOT IN =  Filtra linhas da tabela usando valores de um campo especifico retornando as informações que NÃO atendem ao filtro.
+BETWEEN =Retorna os valores que estão no intervalo da condição dos valores do between, incluindo os valores passado como filtro.
+GROUP BY = Agrupa os resultados de uma função mostrando o resultado em cada linha da coluna. 
+divide o resultado da consulta em grupos de linhas, normalmente, com a finalidade de executar uma ou mais agregações em cada grupo. 
+HAVING = é o filtro depois dos dados agrupados pelo GROUP BY
+
+IF = retona os dados que atende a condição de if, permite criar coluna baseado no resultado da condição, sempre tem um else
+Case = retorna os valores de acordo com as condições impostas em uma nova coluna
+-----Funçoes de String-----
+	length = exibe o tamanho da string passada como parâmetro
+	ucase = retorna em caixa alta a string passada como parâmetro
+	lcase =  retorna em caixa baixa a string passada como parâmetro
+	replace = substitui todas as ocorrencias de um carctere por outro caracter
+	left = retorna x números a partir da esquerda
+	right = retorna x números a partir da direita
+	substring  = retorna determinasdo caracteres que são estipulas em um intervalo, podendo usar número negativo para criar o intervalo quando a contagem começa 		pela direita.
+	o primeiro valor do intervalo(incluso) determina  quantos caracteres serao pulados e o segundo valor determina a quantidade de caracter depois do salto.
+-----Funçoes de String-----
+
+-----Funçoes de matemática-----
+operadores básicos:  +  -  *  /
+DIV = retorna somente a parte inteira do resultado da divisão
+MOD = retorna o resto da divisão
+ROUND =  arredonda valores . Até 0,49 arredonda pra baixo e 0,50 arredonda pra cima
+CEIL = arredonda o valor sempre para o valor inteiro mais próximo para cima
+FLOOR = arredonda o valor sempre para o valor inteiro mais próximo para baixo
+POW = potenciação de um número X elevado a um número Y
+SQRT = Encontra a raiz quadrada de um determinado número, quando não encontrada retorna nulo.
+RAND = retorna valores aleatorios entre 0(incluso) e 1.0(excluso)
+MIN = retorna  o menor valor em um conjunto de valor
+MAX = retorna  o maior valor em um conjunto de valor
+AVG = retorna  a média de em um conjunto de valor
+SUM = soma os valores de uma determinada coluna
+-----Funçoes de matemática-----
+
+-----Funçoes de datas-----
+DATE = retorna somente a data 
+DAY  =   retorna o dia  do que foi  passado como parametro
+MONTH = retorna o mês do que foi passado como parametro
+YEAR =  retorna o ano  do que foi  passado como parametro
+HOUR = retorna a hora  do que foi  passado como parametro
+MINUTE = retorna o minuto  do que foi  passado como parametro
+SECOND = retornao segundo do que foi  passado como parametro
+SELECT DATE(now()) = retorna a data atual.
+CURRENT_DATE = retorna a data atual
+NOW = retorna a data e o horário atual 
+DATEDIFF = retorna a diferença de dias de um determinado intervalo de datas
+TIMEDIFF = retorna a diferença de tempo de um determinado intervalo de horas 
+DATEFORMAT = para customizar  a data
+-----Funçoes de datas-----
+_________________________________________________________________________
+
+-----------------JOINS
+INNER JOIN =  tem a função de retornar os valores em comum de ambas as tabelas. Interessante pra saber o dado que a chave estrangeira tem de fato. 
+LEFT JOIN = retorna os valores da tabela da esquerda em forma cartesiana independente se existe relçao entre os dados da tabela da direita
+SELF JOIN = relaciona os dados da tabela com os dados da prórpria tabela, se usa o inner join
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
