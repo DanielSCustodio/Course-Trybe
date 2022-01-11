@@ -1,0 +1,23 @@
+{
+  "name": "testes",
+  "version": "1.0.0",
+  "description": "testes em node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha test.js"
+  },
+  "keywords": [
+    "test",
+    "node",
+    "mocha",
+    "chai"
+  ],
+  "author": "Daniel Custodio",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.1.3",
+    "sinon": "^12.0.1"
+  }
+}
