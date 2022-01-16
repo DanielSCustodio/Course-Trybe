@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Reveal JS presentation</title>
+
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="http://localhost:53455/libs/reveal.js/4.1.3/reset.css">
+	<link rel="stylesheet" href="http://localhost:53455/libs/reveal.js/4.1.3/reveal.css">
+
+	
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+	  <!-- highlight Theme -->
+  	
+	  <link rel="stylesheet" href="http://localhost:53455/libs/highlight.js/11.3.1/styles/monokai.min.css">
+	
+	
+		
+	<link rel="stylesheet" href="http://localhost:53455/libs/reveal.js/4.1.3/plugin/chalkboard/style.css">
+	
+	
+	
+		<link rel="stylesheet" href="http://localhost:53455/libs/reveal.js/4.1.3/plugin/customcontrols/style.css">
+	
+	<link rel="stylesheet" href="http://localhost:53455/libs/styles/tasklist.css">
+
+
+
+  <!-- Revealjs Theme -->
+  
+  	<link rel="stylesheet" href="http://localhost:53455/libs/reveal.js/4.1.3/theme/black.css" id="theme">
+  
+  
+
+
+  <!-- Revealjs Theme -->
+  
+
+ 
+</head>
+
+<body>
+  
+
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      
+
+
+    
+        <section >
+            
+            <h3>Exercícios</h3>
+<p>Inicie os exercícios criando uma aplicação Node.js com os comandos já aprendidos. A sua API deve rodar em <code>http://localhost:3000</code>.</p>
+<p>Cada desafio pede para implementar um middleware em um arquivo específico dentro do diretório <code>middlewares</code> mas que deve ser associada a uma rota específica.</p>
+<p>Esse repositório possui tanto  <strong>testes unitários</strong> como <strong>testes de integração</strong>, ou seja, ele vai avaliar se o middleware cumpre seu objetivo específico, mas também vai testar se as rotas executam os seus respectivos middlewares.</p>
+<h2>Desafios</h2>
+<h3>1 -  Crie um middleware no arquivo <code>middlewares/pingMiddleware.js</code> seguindo as seguintes especifições:</h3>
+<ul>
+<li>retorne uma resposta com status igual a 200 e a mensagem <code>pong</code>.</li>
+<li>Esse middleware deve ser acessível pela rota <code>GET /ping</code>;</li>
+</ul>
+<h3>2 - Crie um middeware no arquivo <code>middlewares/hello.js</code> seguindo as seguintes especifições:</h3>
+<ul>
+<li>O middleware recebe o atributo <code>name</code> pelo body da requisição</li>
+<li>a resposta do middleware deve ser <code>{ &quot;message&quot;: &quot;Hello, &lt;nome do usuário&gt;!&quot; }</code>, onde <code>&lt;nome do usuário&gt;</code> deve ser o nome enviado.</li>
+<li>O status da resposta deve ser <code>201</code>.</li>
+<li>Esse middleware deve ser acessível pela rota <code>POST /ping</code>;</li>
+</ul>
+<h3>3 - Crie um middeware no arquivo <code>middlewares/greeting.js</code>.</h3>
+<ul>
+<li>esse middleware recebe o atributos <code>name</code> e <code>age</code> pelo body da requisição. Esse middleware deve seguir a seguinte lógica:</li>
+</ul>
+<ul>
+<li>Se o valor do atributo <code>age</code> for maior ou igual a 18 deve a resposta deve ter o status 200 e o json <code>{ &quot;message&quot;: &quot;Hello, &lt;nome do usuário&gt;!&quot; }</code></li>
+<li>Se o valor do atributo <code>age</code> for menor que 18 a resposta deve ter o status 401 e o json <code>{ &quot;message&quot;: &quot;Unauthorized&quot; }</code>.</li>
+</ul>
+<ul>
+<li>Esse middleware deve ser acessível pela rota <code>POST /greeting</code>.</li>
+</ul>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p>:warning: Para os próximos desafios, será usando o arquivo <code>simpsons.json</code>, não modifique o conteúdo desse arquivo, exceto quando o requisito pedir por isso.</p>
+<p>:warning: Utilize o modulo <code>fs</code> do Node para ler e escrever nesse arquivo.</p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>4 -  Crie um middleware no arquivo <code>middlewares/getSimpsons.js</code> seguindo as seguintes especifições:</h3>
+<ul>
+<li>a resposta deve ter o status <code>200</code> e retornar o conteúdo do arquivo <code>simpsons.json</code>.</li>
+<li>Esse middleware deve ser acessível pela rota <code>GET /simpsons</code></li>
+</ul>
+<h3>5 - Crie um middleware no arquivo <code>middlewares/getSimpsonById.js</code> seguindo as seguintes especifições:</h3>
+<ul>
+<li>Deve receber o id como <strong>parâmetro de rota</strong>;</li>
+<li>Se existir um simpson correspondente ao id passado a resposta da requisição deve ter o status 200 e retornar o objeto do simpson como json.</li>
+<li>Se não existir um simpson correspondente ao id passado a resposta da requisição deve ter o status 404 e retornar o seguinte json: <code>{ message: 'Simpson not found!'}</code></li>
+</ul>
+<p>Esse middleware deve ser acessível através da rota <code>GET /simpsons/:id</code></p>
+<h3>6 - Crie um middleware no arquivo <code>middlewares/createSimpson.js</code> seguindo as seguintes especifições:</h3>
+<ul>
+<li>Deve ser capaz de receber os parâmetros <code>id</code> e <code>body</code> no corpo da requisição.</li>
+<li>Deve ser capaz de adicionar um objeto com os dois parâmetros recebidos no arquivo <code>simpsons.json</code>.</li>
+<li>A resposta da requisição deve ser <code>{ message: 'Simpson criado com sucesso!' }</code> com o status <code>201</code>.</li>
+</ul>
+<p>Esse middleware deve ser chamado pela rota <code>POST /simpsons</code>.</p>
+<h3>7 - Crie um middleware no arquivo <code>middlewares/validateIdSimpson.js</code> seguindo as seguintes especifições:</h3>
+<ul>
+<li>Deve ser capaz de receber o parâmetro <code>id</code> do <code>req.body</code>.</li>
+<li>Se já existir um simpson com id passado deve retornar o json <code>{ message: 'Não é possível cadastrar esse simpson!'}</code> com o status <code>500</code>.</li>
+<li>Caso não exista, deve chamar a função <code>next</code> do middleware.</li>
+<li>Esse middleware deve ser chamado pela rota <code>POST /simpsons</code> <strong>antes</strong> do middleware construído no requisito 6.</li>
+</ul>
+<h3>8 - Crie um middleware no arquivo <code>middlewares/validateNameSimpson.js</code> seguindo as seguintes especifições:</h3>
+<ul>
+<li>Deve ser capaz de receber o parâmetro <code>name</code> do <code>req.body</code>.</li>
+<li>Se o valor de <code>name</code> for igual a vazio ou nulo deve retornar o json <code>{ message: 'Nome é obrigatório'}</code> e status 500.</li>
+<li>Caso <code>name</code> seja válido deve chamar a função <code>next</code> do middleware.</li>
+<li>Esse middleware deve ser chamado pela rota <code>POST /simpsons</code> <strong>antes</strong> do middleware construído no requisito 6 e <strong>depois</strong> do middleware construído no requisito 7.</li>
+</ul>
+
+            </section>
+    
+
+
+    </div>
+
+
+  </div>
+
+  	
+	<script src="http://localhost:53455/libs/reveal.js/4.1.3/reveal.js"></script>
+	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/zoom/zoom.js"></script>
+	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/notes/notes.js"></script>
+	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/search/search.js"></script>
+	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/markdown/markdown.js"></script>
+	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/highlight/highlight.js"></script>
+	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/menu/menu.js"></script>
+	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/math/math.js"></script>
+
+	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/fullscreen/plugin.js"></script>
+  
+  	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/animate/plugin.js"></script>
+  	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/animate/svg.min.js"></script>
+  
+  	 <!--	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/anything/plugin.js"></script> -->
+
+ <!--	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/audio-slideshow/plugin.js"></script>  -->
+<!--	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/audio-slideshow/recorder.js"></script>-->
+<!--	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/audio-slideshow/RecordRTC.js"></script>-->
+
+<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/chalkboard/plugin.js"></script>
+	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/customcontrols/plugin.js"></script>
+	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/embed-tweet/plugin.js"></script>
+
+	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/chart/chart.min.js"></script>
+	<script src="http://localhost:53455/libs/reveal.js/4.1.3/plugin/chart/plugin.js"></script>
+
+  <script>
+
+		const printPlugins = [
+			RevealNotes, 
+			RevealHighlight,
+			RevealMath,
+			RevealAnimate,
+			RevealChalkboard, 
+			RevealEmbedTweet,
+			RevealChart,
+		];
+
+		const plugins =  [...printPlugins,
+		RevealZoom, 
+		RevealSearch, 
+				RevealMarkdown, 
+				RevealMenu, 
+				RevealFullscreen,
+				//RevealAnything,
+				//RevealAudioSlideshow,
+				//RevealAudioRecorder,
+				RevealCustomControls, 
+				// poll
+				// question
+				// seminar
+				 ]
+
+
+		// Also available as an ES module, see:
+		// https://revealjs.com/initialization/
+		Reveal.initialize({
+			controls: true,
+			controlsTutorial: true,
+			controlsLayout: 'bottom-right',
+			controlsBackArrows: 'faded',
+			progress: true,
+			slideNumber: false,
+			//#showSlideNumber "all" "print" "speaker"
+			hash: true,//#  hash: false,
+			//# respondToHashChanges: true,
+			//# history: false,
+			keyboard: true,
+			//#keyboardCondition: null,
+			overview: true,
+			center: true,
+			touch: true,
+			loop: false,
+			rtl: false,
+			//#navigationMode: 'default', linear grid
+			shuffle: false,
+			fragments: true,
+			fragmentInURL: false,
+			embedded: false,
+			help: true,
+			//#pause: true
+			showNotes: false,
+			autoPlayMedia: false, // TODO fix this to a nullable value
+			//#preloadIframes: null. true false
+			//#autoAnimate: true
+			//#autoAnimateMatcher: null,
+			//#autoAnimateEasing: 'ease',
+			//autoAnimateDuration: 1.0,
+			//#autoAnimateUnmatched: true
+			//#autoAnimateStyles: []
+			autoSlide: 0, // TODO fix this to a falseable value
+			autoSlideStoppable: true,
+			autoSlideMethod: '0',
+			defaultTiming: 120,
+			mouseWheel: false,
+			//#previewLinks: false
+			//#postMessage: true,  // TODO : this can cause issues with the vscode api ???
+			//#postMessageEvents: false,
+			//#focusBodyOnPageVisibilityChange: true,
+			transition: 'slide',
+			transitionSpeed: 'default',
+			backgroundTransition: 'fade',
+			//#pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY,
+			//#pdfSeparateFragments: true,
+			//#pdfPageHeightOffset: -1,
+			viewDistance: 3,
+			//#mobileViewDistance: 2,
+			display: 'block',
+			//#hideInactiveCursor: true,
+			//#hideCursorTime: 5000
+
+			// Parallax Background
+			parallaxBackgroundImage: '',
+			parallaxBackgroundSize: '',
+			parallaxBackgroundHorizontal: 0,
+			parallaxBackgroundVertical: 0,
+			
+			//Presentation Size
+			width: 960,
+			height: 700,
+			margin: 0.04,
+			minScale: 0.2,
+			maxScale: 2,
+			disableLayout: false,
+
+			audio: {
+				prefix: 'audio/', 	// audio files are stored in the "audio" folder
+				suffix: '.ogg',		// audio files have the ".ogg" ending
+				textToSpeechURL: null,  // the URL to the text to speech converter
+				defaultNotes: false, 	// use slide notes as default for the text to speech converter
+				defaultText: false, 	// use slide text as default for the text to speech converter
+				advance: 0, 		// advance to next slide after given time in milliseconds after audio has played, use negative value to not advance
+				autoplay: false,	// automatically start slideshow
+				defaultDuration: 5,	// default duration in seconds if no audio is available
+				defaultAudios: true,	// try to play audios with names such as audio/1.2.ogg
+				playerOpacity: 0.05,	// opacity value of audio player if unfocused
+				playerStyle: 'position: fixed; bottom: 4px; left: 25%; width: 50%; height:75px; z-index: 33;', // style used for container of audio controls
+				startAtFragment: false, // when moving to a slide, start at the current fragment or at the start of the slide
+			},
+			
+			chalkboard: { // font-awesome.min.css must be available
+					//src: "chalkboard/chalkboard.json",
+					storage: "chalkboard-demo",
+				},
+			
+			customcontrols: {
+					controls: [
+      						{
+						  id: 'toggle-overview',
+						  title: 'Toggle overview (O)',
+						  icon: '<i class="fa fa-th"></i>',
+						  action: 'Reveal.toggleOverview();'
+						}
+						,
+						{ icon: '<i class="fa fa-pen-square"></i>',
+						  title: 'Toggle chalkboard (B)',
+						  action: 'RevealChalkboard.toggleChalkboard();'
+						},
+						{ icon: '<i class="fa fa-pen"></i>',
+						  title: 'Toggle notes canvas (C)',
+						  action: 'RevealChalkboard.toggleNotesCanvas();'
+						}
+				]
+			},
+			chart: {
+					defaults: { 
+						color: 'lightgray', // color of labels
+						scale: { 
+							beginAtZero: true, 
+							ticks: { stepSize: 1 },
+							grid: { color: "lightgray" } , // color of grid lines
+						},
+					},
+					line: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ], "borderDash": [ [5,10], [0,0] ] }, 
+					bar: { backgroundColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+					pie: { backgroundColor: [ ["rgba(0,0,0,.8)" , "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"] ]},
+					radar: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+			},
+			math: {
+				mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+				config: 'TeX-AMS_HTML-full',
+				// pass other options into `MathJax.Hub.Config()`
+				TeX: { Macros: { RR: "{\\bf R}" } }
+				},
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: (window.location.search.match(/print-pdf/gi) ? printPlugins : plugins ) 
+		});
+			
+
+
+	    // Change chalkboard theme : 
+		function changeTheme(input) {
+			var config = {};
+			config.theme = input.value;
+			Reveal.getPlugin("RevealChalkboard").configure(config);
+			input.blur();
+		}
+
+		// // Handle the message inside the webview
+        // window.addEventListener('message', event => {
+
+        //     const message = event.data; // The JSON data our extension sent
+
+        //     switch (message.command) {
+        //         case 'refactor':
+        //             Reveal.toggleHelp();
+        //     }
+        // });
+
+		if (window.location.search.match(/print-pdf-now/gi)) {
+      		setTimeout(() => {
+				window.print();
+			  }, 2500);
+			
+    }
+		
+
+	</script>
+
+</body>
+
+</html>
