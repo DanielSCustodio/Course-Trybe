@@ -213,6 +213,95 @@ SELECT
     (SELECT count(*) FROM SpotifyClone.albuns) AS albuns;
 
 
+SELECT
+	user.nome AS usuario, count(historico_de_reproducoes.id_musica) AS qtde_musicas_ouvidas,
+	FORMAT(SUM(musicas.duracao_segundos/60),2) AS total_minutos
+	FROM SpotifyClone.usuarios AS user
+	INNER JOIN SpotifyClone.historico_de_reproducoes
+	ON user.id_usuario = historico_de_reproducoes.id_usuario
+	INNER JOIN SpotifyClone.musicas
+	ON  historico_de_reproducoes.id_musica=musicas.id_musica
+	GROUP BY user.nome
+	ORDER BY user.nome
+	
+	
+	
+SELECT
+  usuarios.nome AS `usuario`,
+  IF(MAX(YEAR(historico.data_reproducao)) = "2021", "Usuário ativo", "Usuário inativo") AS `condicao_usuario`
+FROM
+  SpotifyClone.historico_de_reproducoes AS `historico`
+  INNER JOIN SpotifyClone.usuarios AS `usuarios` ON historico.id_usuario = usuarios.id_usuario
+GROUP BY usuarios.nome
+ORDER BY usuarios.nome;
+
+
+SELECT  cancao.nome AS `cancao`,
+  COUNT(historico_de_reproducoes.id_musica) AS `reproducoes`
+FROM SpotifyClone.musicas AS `cancao`
+  INNER JOIN SpotifyClone.historico_de_reproducoes 
+  ON historico_de_reproducoes.id_musica = cancao.id_musica
+GROUP BY cancao.nome
+ORDER BY reproducoes DESC, cancao ASC
+LIMIT 2;
+
+
+-- Consulta: https://www.devmedia.com.br/sql-max-min-avg-sum-e-count/41218
+SELECT  
+	MIN(planos.valor) AS `faturamento_minimo`,
+	MAX(planos.valor) AS `faturamento_maximo`,
+	FORMAT(AVG(planos.valor), 2) AS `faturamento_medio`,
+	SUM(planos.valor) AS `faturamento_total`
+FROM SpotifyClone.usuarios
+  INNER JOIN SpotifyClone.planos 
+  ON planos.id_plano = usuarios.id_plano;
+
+SELECT 
+	artistas.nome AS `artista`,
+    albuns.nome AS `album`,
+COUNT(usuario_seguindo_artista.id_artista) AS `seguidores`
+FROM SpotifyClone.usuario_seguindo_artista
+INNER JOIN SpotifyClone.artistas AS `artistas`
+  ON usuario_seguindo_artista.id_artista = artistas.id_artista
+INNER JOIN SpotifyClone.albuns AS `albuns`
+  ON albuns.id_artista = artistas.id_artista
+GROUP BY  `artista`, `album`
+ORDER BY `seguidores` DESC, `artista` ASC, `album` ASC;
+
+
+SELECT 
+	artistas.nome AS `artista`,
+	albuns.nome AS `album`
+FROM SpotifyClone.albuns
+INNER JOIN SpotifyClone.artistas
+	ON SpotifyClone.albuns.id_artista = SpotifyClone.artistas.id_artista
+WHERE artistas.nome = "Walter Phoenix";
+
+SELECT 
+  COUNT(usuario.nome) as quantidade_musicas_no_historico
+FROM SpotifyClone.historico_de_reproducoes
+INNER JOIN SpotifyClone.usuarios AS `usuario`
+	ON SpotifyClone.historico_de_reproducoes.id_usuario = usuario.id_usuario
+WHERE usuario.nome = 'Bill';
+
+
+SELECT musicas.nome AS `nome`,
+COUNT(historico_de_reproducoes.id_musica) AS reproducoes FROM `musicas`
+INNER JOIN SpotifyClone.historico_de_reproducoes
+	ON musicas.id_musica = historico_de_reproducoes.id_musica
+INNER JOIN SpotifyClone.usuarios 
+	ON historico_de_reproducoes.id_usuario = usuarios.id_usuario
+INNER JOIN SpotifyClone.planos 
+	ON usuarios.id_plano = planos.id_plano
+WHERE planos.nome = "gratuito" OR planos.nome = 'pessoal'
+GROUP BY musicas.nome
+ORDER BY musicas.nome;
+
+
+
+
+
+
 
 
 
