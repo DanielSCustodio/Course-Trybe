@@ -1,7 +1,8 @@
 const peopleModel=require('../model/peopleModel');
 
-const getAll=async () => {
-  return peopleModel.getAll();
+const getAll = async () => {
+  const person = await peopleModel.getAll();
+  return person;
 }
 
 const getById = async (id) => {
@@ -22,13 +23,11 @@ const add = async ({name,age}) => {
 
 const update = async ({name, age, id}) => {
   await getById(id);
-  const updatePerson = await peopleModel.update(name, age, id);
-  return updatePerson;
-  
+  return await peopleModel.update(name, age, id);
 }
 
 const remove = async (id) => {
-  await peopleModel.remove(id);
+  return await peopleModel.remove(id);
 }
 
 
