@@ -16,6 +16,6 @@ app.use(middlewares.dominianError);
 
 app.use(middlewares.genericError);
 
-app.listen(3000,() => {
+app.listen(3001,() => {
   console.log('Listen on port 3000');
 });
