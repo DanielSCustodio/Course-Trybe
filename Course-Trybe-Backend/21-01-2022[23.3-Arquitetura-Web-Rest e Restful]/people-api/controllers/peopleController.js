@@ -55,7 +55,7 @@ people.put('/:id',
 people.delete('/:id',
   rescue(async (req,res) => {
     const {id}=req.params;
-    await peopleService.remove(id);
+    const person =  await peopleService.remove(id);
     res.status(204).end();
   })
 );
