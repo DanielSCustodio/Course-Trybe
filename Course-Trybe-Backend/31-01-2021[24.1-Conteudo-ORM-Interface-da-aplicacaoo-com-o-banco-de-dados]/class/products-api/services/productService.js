@@ -1,15 +1,19 @@
-const { Product, Category } = require('../models');
+const Product = require('../models/Product');
 
-const getAll = async () => {
-  // const products = await Product.findAll();
-  const categories = await Category.findAll();
-
-  return categories;
-};
+const getAll = async () =>{
+  const products = await Product.findAll();
+  return products;
+}
 
 const getById = async (id) => {
   // TODO: Substituir pela busca de um produto com o model
-  const product = await Product.findByPk(id);
+  const product = id === '1'
+      ? {
+          id,
+          name: 'fake product',
+          description: 'fake product description',
+        }
+      : null;
 
   if (!product) {
     const error = new Error();
@@ -23,7 +27,11 @@ const getById = async (id) => {
 
 const create = async (name, description) => {
   // TODO: Substituir pela criação do produto com o model
-  const product = await Product.create({ name, description });
+  const product = {
+    id: 1,
+    name: `FAKE: ${name}`,
+    description: `FAKE: ${description}`,
+  };
 
   return product;
 };
