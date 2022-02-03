@@ -1,19 +1,15 @@
-const Product = require('../models/Product');
+const {Product, Category} = require('../models/'); // O model Product está dentro do arquivo index.js, pois ele faz a leitura de todos dos models
 
 const getAll = async () =>{
-  const products = await Product.findAll();
-  return products;
+/*   const products = await Product.findAll();
+ */  
+  const categories = await Category.findAll();
+  return categories;
 }
 
 const getById = async (id) => {
   // TODO: Substituir pela busca de um produto com o model
-  const product = id === '1'
-      ? {
-          id,
-          name: 'fake product',
-          description: 'fake product description',
-        }
-      : null;
+const product = Product.findByPk(id)
 
   if (!product) {
     const error = new Error();
@@ -27,12 +23,7 @@ const getById = async (id) => {
 
 const create = async (name, description) => {
   // TODO: Substituir pela criação do produto com o model
-  const product = {
-    id: 1,
-    name: `FAKE: ${name}`,
-    description: `FAKE: ${description}`,
-  };
-
+  const product = Product.create({name, description});
   return product;
 };
 
