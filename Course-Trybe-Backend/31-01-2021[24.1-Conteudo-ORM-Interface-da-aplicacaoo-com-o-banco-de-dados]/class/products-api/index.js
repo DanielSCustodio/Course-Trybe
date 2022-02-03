@@ -4,5 +4,4 @@ const { PORT = 3000 } = process.env;
 
 app.listen(PORT, () => {
   console.log(`Escutando na porta ${PORT}`);
-  console.log('Rodando->', PORT);
 });
