@@ -21,9 +21,7 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(file => {
-    const buildModel = require(path.join(__dirname, file))
-    const model = buildModel(sequelize, Sequelize.DataTypes);
-    console.log('Model ===> ', model.name)
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 

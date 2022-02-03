@@ -1,6 +1,3 @@
-// sequelize para desenvolvimento: npm i sequelize-cli -D
-// ver os comandos do sequelize: npx sequelize
-// iniciando projeto: npx sequelize init
 const express = require('express');
 const bodyParser = require('body-parser');
 
