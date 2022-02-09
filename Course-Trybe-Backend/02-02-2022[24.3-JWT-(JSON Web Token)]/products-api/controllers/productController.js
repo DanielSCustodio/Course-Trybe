@@ -31,17 +31,9 @@ router.get(
 router.post(
   '/',
   rescue(async (req, res) => {
-    const {authorization} = req.headers;
     validateWithJoi(productSchema, req.body);
-
-    if(authorization ==='secret'){
-      const product = await productService.create();
-      return res.status(201).json(product);
-    }else{
-      return  res.status(401).json({messsage: 'Você não possui moral o suficiente para realizar essa operação'});
-
-    }
-    
+    const product = await productService.create();
+    return res.status(201).json(product);
   }),
 );
 
