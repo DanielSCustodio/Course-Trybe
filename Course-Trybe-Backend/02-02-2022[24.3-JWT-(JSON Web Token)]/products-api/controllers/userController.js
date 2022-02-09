@@ -1,29 +1,23 @@
 const router = require('express').Router();
 const rescue = require('express-rescue');
+const userService = require('../services/userService');
 const Joi = require('joi');
-const jwt = require('jsonwebtoken');
-const { validateWithJoi } = require('./utils/joi');
-const { User  } = require('../models');
+const {
+  validateWithJoi
+} = require('./utils/joi');
 
 
-const userSchema =Joi.object({
+
+const userSchema = Joi.object({
   username: Joi.string().required(),
   email: Joi.string().required(),
   password: Joi.string().required(),
 });
 
 router.post('/', async (req, res) => {
-const { username, password, email } = req.body;
-
-validateWithJoi(userSchema, req.body)
-
-const user = await User.create({username, password, email});
-/* const token = jwt.sign(user, 'secret',{
-  algorithm:'HS256',
-  expiresIn:'1d'
-});
-res.status(201).json(user, token) */
-
+  validateWithJoi(userSchema, req.body)
+  const {user, token} = await userService.create(req.body);
+  res.status(201).json({user, token})
 });
 
 
