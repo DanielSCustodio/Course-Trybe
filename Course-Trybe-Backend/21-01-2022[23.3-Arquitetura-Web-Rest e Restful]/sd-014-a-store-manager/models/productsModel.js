@@ -27,7 +27,7 @@ const getById = async (id) => {
   return result[0];
 };
 
-const getByname = async (name) => {
+const getByName = async (name) => {
   const [result] = await connection.query(
     'SELECT name FROM products WHERE name = ?;',
     [name],
@@ -40,7 +40,7 @@ const update = async (name, quantity, id) => {
     'UPDATE products SET name = ?, quantity = ? WHERE id = ?;',
     [name, quantity, id],
   );
-  return { // criar variável para fazer o return
+  return { 
     id,
     name,
     quantity,
@@ -48,12 +48,12 @@ const update = async (name, quantity, id) => {
 };
 
 const remove = async (id) => {
-  const products = await getById(id);
+  const product = await getById(id);
   await connection.query(
     'DELETE FROM products WHERE id = ?;',
     [id],
   );
-  return products;
+  return product;
 };
 
 module.exports = {
@@ -62,5 +62,5 @@ module.exports = {
   getById,
   update,
   remove,
-  getByname,
+  getByName,
 };
