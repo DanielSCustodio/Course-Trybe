@@ -1,0 +1,20 @@
+{
+  "name": "class",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node index.js",
+    "debug":"ts-node-dev index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.5.0"
+  },
+  "dependencies": {
+    "ts-node-dev": "^1.1.8"
+  }
+}
