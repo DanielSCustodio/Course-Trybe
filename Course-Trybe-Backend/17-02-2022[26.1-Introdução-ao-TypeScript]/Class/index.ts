@@ -3,6 +3,7 @@ console.log(typeof email);
 console.log(email);
 email='daniel@gmail.com'; // Não vai aceitar
 console.log(email); */
+
 /* 
 const gritar = (name:string) =>{
   console.log(typeof name);
@@ -50,4 +51,7 @@ nomes.map((nome)=>{
   let nameUpperCase = gritar(nome);
   loga(nameUpperCase.trim());  
 })
+
+
+
 
