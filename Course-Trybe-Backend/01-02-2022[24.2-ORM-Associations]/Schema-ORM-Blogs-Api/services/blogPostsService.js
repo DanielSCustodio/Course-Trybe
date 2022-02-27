@@ -1,14 +1,16 @@
 const { BlogPost } = require('../models');
 
-const createBlogPost = async ({ title, content, categoryId }) => {
+const createBlogPost = async ({ title, content, categoryIds, userId = 1 }) => {
   const newBlogPost = await BlogPost.create({ 
     title,
     content,
-    categoryId,
+    userId,
+    categoryIds,
     published: new Date(),
     updated: new Date(),
   });
-  return newBlogPost.dataValues;
+
+  return newBlogPost;
 };
 
 module.exports = {
