@@ -4,10 +4,29 @@ const validationToken = require('../controllers/middlewares/validationToken');
 const blogPostController = require('../controllers/blogPostController');
 
 blogPost.post('/',
-validationToken.findToken,
-validationToken.checkToken,
-validationPostBlog.checkBody,
-validationPostBlog.checkIdcategory,
-blogPostController.createBlogPost);
+  validationToken.findToken,
+  validationToken.checkToken,
+  validationPostBlog.checkBody,
+  validationPostBlog.checkIdcategory,
+  blogPostController.createBlogPost);
+
+blogPost.get('/',
+  validationToken.findToken,
+  validationToken.checkToken,
+  blogPostController.getAllBlogPosts);
+
+blogPost.get('/:id',
+  validationToken.findToken,
+  validationToken.checkToken,
+  validationPostBlog.checkIdBlogPost,
+  blogPostController.getBlogPostsId);
+
+blogPost.put('/:id',
+  validationPostBlog.notEditCategory,
+  validationPostBlog.userAuthorization,
+  validationToken.findToken,
+  validationToken.checkToken,
+/*   validationPostBlog.checkTitle, */
+  blogPostController.editBlogPosts);
 
 module.exports = blogPost;

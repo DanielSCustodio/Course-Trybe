@@ -90,9 +90,21 @@ module.exports = [
   },
 
   {
+    status: 401,
+    messageReceived: 'Unauthorized user',
+    message: 'Unauthorized user',
+  },
+
+  {
     status: 400,
     messageReceived: '"categoryIds" not found',
     message: '"categoryIds" not found',
+  },
+
+  {
+    status: 400,
+    messageReceived: 'Categories cannot be edited',
+    message: 'Categories cannot be edited',
   },
 
   {
@@ -100,4 +112,11 @@ module.exports = [
     messageReceived: 'User does not exist',
     message: 'User does not exist',
   },
+
+  {
+    status: 404,
+    messageReceived: 'Post does not exist',
+    message: 'Post does not exist',
+  },
+
 ];
