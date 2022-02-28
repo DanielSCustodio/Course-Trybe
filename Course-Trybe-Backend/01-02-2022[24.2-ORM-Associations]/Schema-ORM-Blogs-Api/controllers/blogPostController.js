@@ -2,18 +2,38 @@ const jwt = require('jsonwebtoken');
 const blogPostsService = require('../services/blogPostsService');
 
 const createBlogPost = async (req, res) => {
-  console.log('CREATE BLOG====> PASSOU AQUI');
   const token = req.headers.authorization;
   const { title, content, categoryIds } = req.body;
-  const incognit = jwt.decode(token);
-  const { id: userId } = incognit;
+  const decode = jwt.decode(token);
+  const { id: userId = 1 } = decode; 
   const { id } = await blogPostsService.createBlogPost({
-    userId, title, content, categoryIds,
+    title, content, categoryIds,
   });
-  const result = await { id, userId, title, content };
-  return res.status(201).json(result);
+  
+  return res.status(201).json({ id, userId, title, content });
+};
+
+const getAllBlogPosts = async (req, res) => {
+  const allBlogPosts = await blogPostsService.getAllBlogPosts();
+  return res.status(200).json(allBlogPosts);
+};
+
+const getBlogPostsId = async (req, res) => {
+  const { id } = req.params;
+  const blogPost = await blogPostsService.getBlogPostsId(id);
+  res.status(200).json(blogPost);
+};
+
+const editBlogPosts = async (req, res) => {
+  const { id } = req.params;
+  const { title, content } = req.body;
+  const blogPostEdited = await blogPostsService.editBlogPosts(id, title, content);
+  res.status(200).json(blogPostEdited);
 };
 
 module.exports = {
   createBlogPost,
+  getAllBlogPosts,
+  getBlogPostsId,
+  editBlogPosts,
 };
