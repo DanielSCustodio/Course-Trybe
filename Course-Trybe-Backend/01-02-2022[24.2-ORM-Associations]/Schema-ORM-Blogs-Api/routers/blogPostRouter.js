@@ -22,11 +22,10 @@ blogPost.get('/:id',
   blogPostController.getBlogPostsId);
 
 blogPost.put('/:id',
-  validationPostBlog.notEditCategory,
   validationPostBlog.userAuthorization,
+  validationPostBlog.checkBodyTwo,
   validationToken.findToken,
-  validationToken.checkToken,
-/*   validationPostBlog.checkTitle, */
-  blogPostController.editBlogPosts);
+  validationToken.checkToken, 
+  blogPostController.editBlogPost);
 
 module.exports = blogPost;

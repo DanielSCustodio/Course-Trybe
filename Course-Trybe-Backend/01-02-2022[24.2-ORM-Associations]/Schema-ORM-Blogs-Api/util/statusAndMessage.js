@@ -103,7 +103,7 @@ module.exports = [
 
   {
     status: 400,
-    messageReceived: 'Categories cannot be edited',
+    messageReceived: '"categoryIds" is not allowed',
     message: 'Categories cannot be edited',
   },
 
