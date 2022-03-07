@@ -5,13 +5,13 @@
 }
 
 let newStudentStatus: StudentStatus = StudentStatus.Paused; // referenciamos um enum usando EnumName.Value
-console.log(newStudentStatus); //saída: 1 */
+console.log(newStudentStatus); //saída: 3 */
 
 
 enum StatusCodes {
   OK = 200,
+  Unauthorized = 400,
   BadRequest = 400,
-  Unauthorized,
   PaymentRequired,
   Forbidden,
   NotFound,
