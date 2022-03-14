@@ -1,19 +1,14 @@
 import {IUser} from '../models/IUser';
-import Joi from'joi';
+import builSchemas from '../util/schemaUser'
 import User from '../models/User';
 import { NextFunction, Request, Response } from 'express';
 
-const userSchema = Joi.object({
-  username: Joi.string().required(),
-  email: Joi.string().required(),
-  password: Joi.string().required(),
-  role: Joi.string().required().valid('admin','user'),
-});
 
 
 export default class UserController {
 
   public static async validateParams (req: Request, res: Response, next: NextFunction) {
+    const userSchema = builSchemas(['admin','user']);
     const {error} = userSchema.validate(req.body);
     if(error){
       return res.status(400).json({message: error.message})
