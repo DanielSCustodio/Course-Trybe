@@ -2,67 +2,63 @@ show dbs;
 show collections;
 
 use('class');
+
+db.dropDatabase();
+
+
+db.inventory.find()
+
+db.inventory.find({status:'D', item:'paper'});
+
+db.inventory.find({status:'D'}, {item:1, _id:0});
+
+db.inventory.find().limit(3);
+
+db.inventory.find().skip(1).limit(3);
+
+show dbs;
+
+show collections;
+
+db.createCollection("othercontent", {  collation: { locale: "fr"  }});
+
+db.othercontent.drop();
+
 db.inventory.insertOne({
   item: "journal",
   qty: 25,
-  size: {
-    h: 14,
-    w: 21,
-    uom: "cm"
-  },
+  size: {    h: 14,    w: 21,    uom: "cm"  },
   status: "A"
 });
 
-show dbs;
-show collections;
+
 
 db.inventory.insertOne({
   _id: 2,
   item: "notebook",
   qty: 50,
-  size: {
-    h: 8.5,
-    w: 11,
-    uom: "in"
-  },
+  size: {    h: 8.5,    w: 11,    uom: "in"  },
   status: "A"
 });
 
 db.inventory.insertMany([{
     item: "paper",
     qty: 100,
-    size: {
-      h: 8.5,
-      w: 11,
-      uom: "in"
-    },
+    size: {      h: 8.5,      w: 11,      uom: "in"    },
     status: "D"
   },
   {
     item: "planner",
     qty: 75,
-    size: {
-      h: 22.85,
-      w: 30,
-      uom: "cm"
-    },
+    size: {      h: 22.85,      w: 30,      uom: "cm"    },
     status: "D"
   },
   {
     item: "postcard",
     qty: 45,
-    size: {
-      h: 10,
-      w: 15.25,
-      uom: "cm"
-    },
+    size: {      h: 10,      w: 15.25,      uom: "cm"    },
     status: "A"
   }
 ]);
 
 // https://docs.mongodb.com/manual/reference/method/db.createCollection/#db.createCollection
-db.createCollection("content", {
-  collation: {
-    locale: "fr"
-  }
-});
