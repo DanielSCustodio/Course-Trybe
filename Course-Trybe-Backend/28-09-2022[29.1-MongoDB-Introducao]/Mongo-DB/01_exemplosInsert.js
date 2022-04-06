@@ -1,7 +1,7 @@
 show dbs;
 show collections;
 
-use('class');
+use class;
 db.inventory.insertOne({
   item: "journal",
   qty: 25,
