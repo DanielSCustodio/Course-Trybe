@@ -1,0 +1,4 @@
+use('produtos');
+
+db.itens.find({categoria:'Frutas', valor_saida_itens: {$gt:100}},
+{categoria:1, valor_saida_itens:1,_id:0});

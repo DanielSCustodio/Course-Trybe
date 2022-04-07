@@ -1,0 +1,4 @@
+use('produtos');
+
+db.itens.find({valor_entrada_itens: {$mod:[2,1]}},
+{categoria:1, valor_entrada_itens:1,_id:0});

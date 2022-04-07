@@ -1,0 +1,11 @@
+use('produtos'); 
+db.itens.find()
+
+use('produtos'); 
+db.itens.find({quantidade : {$elemMatch: {$gte:70, $lte:90}}},
+{quantidade:1, categoria:1, _id:0}).sort({categoria:1});
+
+// pelo menos um do valores do array atende uma das condições
+use('produtos'); 
+db.itens.find({},{quantidade : {$elemMatch: {$gte:70, $lte:90}}});
+
