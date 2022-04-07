@@ -1,0 +1,20 @@
+
+// Encontrar todos os produtos em que o campo valor_entrada_itens 
+//é maior que valor_saida_itens
+use('produtos');
+
+db.itens.find({$expr: {$lt:['$valor_entrada_itens', '$valor_saida_itens']}},
+{valor_saida_itens:1, valor_entrada_itens:1, _id:0});
+
+
+use('produtos');
+
+db.itens.find({$expr: {$eq:['$valor_entrada_itens', '$valor_saida_itens']}},
+{valor_saida_itens:1, valor_entrada_itens:1, _id:0});
+
+
+
+use('produtos');
+
+db.itens.find({$expr: {$ne:['$valor_entrada_itens', '$valor_saida_itens']}}, //Not equal
+{valor_saida_itens:1, valor_entrada_itens:1, _id:0});

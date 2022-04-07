@@ -1,0 +1,5 @@
+use('produtos'); 
+db.itens.find()
+
+use('produtos'); 
+db.itens.find({tags: {$all:['lemon','orange']}},{tags:1, _id:0});

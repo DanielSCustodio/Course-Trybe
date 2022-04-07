@@ -1,0 +1,7 @@
+use('produtos'); 
+db.itens.find()
+
+use('produtos'); 
+db.itens.find({quantidade:10},{quantidade:1, _id:0});
+
+

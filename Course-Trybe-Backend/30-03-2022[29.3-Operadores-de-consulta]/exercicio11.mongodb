@@ -1,0 +1,10 @@
+use('produtos');
+
+db.itens.find(
+  {tags: {$elemMatch: {$regex:/pen$/}}},
+  {tags:1, _id:0}
+);
+
+
+// todos documento que tem valores em seu array 
+// compativeis com o filtro 
