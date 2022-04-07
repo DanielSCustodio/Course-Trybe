@@ -1,0 +1,64 @@
+
+use('Lanchonete');
+db.burgers.find();
+
+db.burgers.find({}, {lanche:'$nome'})
+
+use('lanches');
+db.burgers.find({},{nome:1, estoque:1, chapeiro:1, 'avaliacao.ruim':1,_id:0})
+.sort({estoque: -1}) // por padrão só vai trazer 20 documentos como resultado da query
+
+db.burgers.find({ingredientes:'calabresa'}).count();
+
+db.burgers.find({estoque: {$lte: 5}}, {nome:1, estoque:1, _id:0});
+
+db.burgers.find({estoque: {$gte: 15}}, {nome:1, estoque:1, _id:0});
+
+db.burgers.find({estoque: {$gte: 5, $lte: 15,}}, {nome:1, estoque:1, _id:0});
+
+db.burgers.find({estoque: {$eq: 5}}, {nome:1, estoque:1, _id:0});
+
+db.burgers.find({'avaliacao.ruim': {$lte:6}},{nome:1, 'avaliacao.ruim':1, _id:0})
+
+db.burgers.find({nome: /pobre/i});
+
+db.burgers.find({nome: /^X-Ca/}, {nome:1, _id:0});
+
+db.burgers.find({nome: /a$/}, {nome:1, _id:0});
+
+db.burgers.find({estoque: {$in:[5,15,8]}},{estoque:1, _id:0} );
+
+db.burgers.find({estoque: {$nin:[5,15,8]}},{estoque:1, _id:0} );
+
+db.burgers.find({$or: [{estoque : {$gte:5}},{'avaliacao.ruim': {$lte:5}}]});
+
+db.burgers.find({estoque: {$not: {$gte:5}}}, {nome:1, estoque:1, _id:0}); 
+
+db.burgers.find({estoque : {$gte:5}, 'avaliacao.ruim': {$lte:5}}, {nome:1, estoque:1, _id:0});
+
+db.burgers.find({avaliacao:{$exists: 0}}, {nome:1, estoque:1, _id:0});
+
+db.burgers.deleteOne({}); 
+
+db.burgers.deleteOne({estoque: 8}); 
+
+db.burgers.deleteMany({});
+
+db.burgers.deleteMany({estoque :{$lte:5}});
+
+
+//-------------------Exercícios-------------------
+
+db.burgers.find().sort({nome:1, chapeiro:1});,
+db.burgers.find({},{estoque:1, cod:1,  _id:0}).sort({estoque:-1, cod:-1});
+
+
+db.burgers.find({chapeiro: 'Batman', 'avaliacao.ruim':{$gte:5, $lte:10}},{chapeiro:1, 'avaliacao.ruim':1, _id:0})
+.sort({'avaliacao.bom':1});
+
+use('Lanchonete');
+db.burgers.find({chapeiro:'Batman', 
+'avaliacao.ruim':{$not:{$gte:5, $lte:10}}},
+{chapeiro:1, 'avaliacao.ruim':1, _id:0}
+).sort({'avaliacao.ruim':1});
+
