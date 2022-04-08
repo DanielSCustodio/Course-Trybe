@@ -1,0 +1,11 @@
+//Garanta que nos filmes de 2001 - Uma Odisséia no Espaço a avaliação.ruim seja no máximo5 
+use('filmes');
+  db.filmes.updateMany(
+    {ano:2001},
+    {$min: {'avaliacao.ruim':5}}
+  )
+
+db.filmes.find(
+  {ano:2001},
+  {titulo:1, 'avaliacao.ruim':1, _id:0}
+);

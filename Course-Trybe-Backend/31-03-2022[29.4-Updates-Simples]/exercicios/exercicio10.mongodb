@@ -1,0 +1,17 @@
+//Incrementação e Decrementação
+use('filmes');
+db.filmes.updateMany( //Incremento
+  {direção:'Steven Spielberg'},
+  {$inc: {'avaliacao.bom':10}}
+);
+
+
+/* db.filmes.updateMany( //Decremento
+  {direção:'Steven Spielberg'},
+  {$inc: {'avaliacao.bom':-10}}
+) */
+
+db.filmes.find(
+  {direção:'Steven Spielberg'},
+  {titulo:1, 'avaliacao.bom':1, _id:0}
+);

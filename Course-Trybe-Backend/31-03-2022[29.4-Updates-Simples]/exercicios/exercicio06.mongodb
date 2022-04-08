@@ -1,0 +1,19 @@
+//Adicione o filem Matrix do ano 1999 com direção lilly Wachowski, mas apenas se ele não existir.
+//Se já existe apenas atualize a direção
+use('filmes');
+db.filmes.find({titulo:/matrix/i});
+
+use('filmes');
+db.filmes.updateOne(
+  {titulo:'Matrix'}, //condição
+  {$set: {direção: 'Lilly Wachowski'}}, // operação de atualização/criação
+  {upsert:true}  // caso a condiçã seja falsa, o campro será criado
+);
+
+
+use('filmes');
+db.filmes.updateOne(
+  {titulo:'Matrix Reloaded'}, //condição
+  {$set: {direção: 'Lilly Wachowski'}}, // operação de atualização/criação
+  {upsert:true}  // caso a condiçã seja falsa, o campro será criado
+);

@@ -1,0 +1,9 @@
+//Remova o campo idioma em todos os documentos onde ele apareça
+
+use('filmes');
+db.filmes.find({idioma: {$exists:1}}).count();
+
+use('filmes');
+  db.filmes.updateMany({idioma: {$exists:1}},
+  {$unset:{"idioma":""}}
+);

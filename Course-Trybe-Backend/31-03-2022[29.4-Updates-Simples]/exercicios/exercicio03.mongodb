@@ -1,0 +1,9 @@
+//Adicione o campo diretor com o valor Sylvester Stallone para o filme Mercenários
+use('filmes');
+db.filmes.find({titulo:/mercenários/i},
+{titulo:1, diretor:1, _id:0});
+
+use('filmes');
+  db.filmes.updateOne({titulo:/mercenários/i},
+  {$set:{diretor:'Sylvester Stallone'}}
+)

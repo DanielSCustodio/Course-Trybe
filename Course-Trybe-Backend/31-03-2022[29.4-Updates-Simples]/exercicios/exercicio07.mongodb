@@ -1,0 +1,13 @@
+//Altere as avaliacoes negativas(ruim) do filme 2001 - Uma Odisséia no espaço para 0
+
+
+
+use('filmes');
+db.filmes.updateOne(
+  {titulo:'2001 - Uma Odisséia no Espaço'},
+  {$set: {'avaliacao.ruim':0}}
+)
+
+db.filmes.find({titulo:'2001 - Uma Odisséia no Espaço'},
+{'avaliacao.ruim':1, titulo:1, _id:0}
+);
