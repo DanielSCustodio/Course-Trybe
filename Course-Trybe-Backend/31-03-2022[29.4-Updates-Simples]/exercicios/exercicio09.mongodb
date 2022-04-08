@@ -1,0 +1,11 @@
+//Garanta que os filmes de Steven Spielberg tenha avaliacao.ruim no mínimo em 5
+use('filmes');
+
+db.filmes.updateMany(
+  {direção:'Steven Spielberg'},
+  {$max: {'avaliacao.ruim':5}}
+)
+db.filmes.find(
+  {direção:'Steven Spielberg'},
+  {titulo:1, 'avaliacao.ruim':1, _id:0}
+)

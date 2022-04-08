@@ -1,0 +1,14 @@
+//Altere todos os documentos para que o campo diretor seja substituído por direção
+use('filmes');
+db.filmes.updateMany({diretor: {$exists:1}}, //filtro
+  {$rename: {'diretor':'direção'}}       //operação de atualização
+);
+
+
+use('filmes'); // Outra solução
+db.filmes.updateMany({}, //filtro
+  {$rename: {'diretor':'direção'}}       //operação de atualização
+);
+
+use('filmes');
+db.filmes.find().count();

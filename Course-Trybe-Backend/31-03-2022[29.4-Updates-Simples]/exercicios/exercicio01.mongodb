@@ -1,0 +1,13 @@
+//Atualiza o atributo assistido para false em todos os documentos onde o diretor seja Quentin Tarantino
+
+use('filmes');
+db.filmes.find(
+  {diretor: 'Quentin Tarantino'} ,// filtro
+  {diretor:1, titulo:1, assistido:1, _id:0}
+);
+
+use('filmes');
+db.filmes.updateOne(
+  {diretor: 'Quentin Tarantino'}, // filtro
+  {$set: {assistido: false}} //operação de atualização 
+);                       // o atributo será criado caso o documento não possua

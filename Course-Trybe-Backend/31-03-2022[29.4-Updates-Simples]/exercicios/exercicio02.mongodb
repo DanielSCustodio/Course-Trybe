@@ -1,0 +1,10 @@
+//Adicione o campo assistido com o valor false em todos os documentos que não tenham o valor assistido
+
+use('filmes');
+db.filmes.find({assistido:false}).count();
+
+
+use('filmes');
+  db.filmes.updateMany({assistido: {$exists:0}},
+  {$set: {assistido: false}}
+);

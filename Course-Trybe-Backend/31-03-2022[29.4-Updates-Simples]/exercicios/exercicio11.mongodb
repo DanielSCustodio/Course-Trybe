@@ -1,0 +1,19 @@
+//Multiplicação e Divisão
+
+use('filmes');
+
+db.filmes.updateMany( //Multiplicação
+  {'avaliacao.bom': {$lte:10}},
+  {$mul: {'avaliacao.bom':2}}
+);
+
+/* db.filmes.updateMany( //Divisão
+  {'avaliacao.bom': {$lte:10}},
+  {$mul: {'avaliacao.bom':2}}
+); */
+
+
+db.filmes.find(
+  {},
+  {titulo:1, 'avaliacao.bom':1, _id:0}
+);

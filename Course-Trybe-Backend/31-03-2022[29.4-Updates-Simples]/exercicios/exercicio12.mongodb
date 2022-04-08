@@ -1,0 +1,16 @@
+use('filmes');
+
+/* db.filmes.updateMany(
+  {},
+  {$currentDate: {assistidoEm: true}}
+); */
+
+db.filmes.updateOne(
+  {},
+  {$currentDate: {assistidoEm: {$type:'timestamp'}}}
+);
+
+db.filmes.find(
+  {},
+  {titulo:1, assistidoEm:1, _id:0}
+);
