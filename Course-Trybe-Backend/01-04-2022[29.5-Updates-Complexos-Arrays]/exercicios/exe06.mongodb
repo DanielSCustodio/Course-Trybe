@@ -1,0 +1,59 @@
+//sort //ordenação de array
+
+use('colecaoCDs');
+
+db.artists.updateOne(
+  {_id:1},
+  {$push :
+    {
+      members: {
+        $each:[],
+        $sort:1
+      }
+    }
+  }
+);
+
+
+/* db.artists.updateOne(
+  {_id:1},
+  {$push :
+    {
+      members: {
+        $each:[],
+        $sort:-1
+      }
+    }
+  }
+);
+ */
+/* db.artists.updateOne(
+  {_id:1},
+  {$push :
+    {
+      members: {
+        $each:['Asa Noturna'],
+        $sort:1
+      }
+    }
+  }
+);
+ */
+
+/* 
+db.artists.updateOne(
+  {_id:1},
+  {$push :
+    {
+      members: {
+        $each:['Zatana'],$position:5, //Não funfa
+        $sort:1
+      }
+    }
+  }
+);
+ */
+
+ 
+db.artists.find();
+

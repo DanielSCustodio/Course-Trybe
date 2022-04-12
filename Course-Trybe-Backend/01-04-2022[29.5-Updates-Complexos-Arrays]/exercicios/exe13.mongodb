@@ -1,0 +1,12 @@
+use('colecaoCDs');
+
+
+db.artists.updateOne(
+  {_id:1}, // filtro do documento
+  {
+    $set: {"albums.$[album].releaseYear":1990} // mudança no objeto 
+  },
+  {arrayFilters: [{'album.title':'Album Agape'}]} //filtro do objeto a ser mudado, pode usar um operador lógico nesse filtro
+);
+
+db.artists.find()

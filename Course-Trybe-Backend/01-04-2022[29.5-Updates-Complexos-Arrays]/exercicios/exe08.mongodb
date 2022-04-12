@@ -1,0 +1,29 @@
+//slice 
+use('colecaoCDs');
+
+/* db.artists.updateOne(
+  {_id:1},
+  {
+    $push: {
+      members:{
+        $each:[],
+        $slice:4, //numero de elementos a ser mantido no array
+      }
+    }
+  }
+); */
+
+
+db.artists.updateOne(
+  {_id:1},
+  {
+    $push: {
+      albums:{
+        $each:[],
+        $sort:{releaseYear:1}, // menos 1 elminaria os ultimos 4
+        $slice:4, //numero de elementos a ser mantido no array
+      }
+    }
+  }
+);
+db.artists.find();

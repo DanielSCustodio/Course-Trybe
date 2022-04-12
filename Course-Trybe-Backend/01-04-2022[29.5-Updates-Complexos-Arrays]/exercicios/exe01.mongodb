@@ -1,0 +1,9 @@
+//Push
+use('colecaoCDs');
+
+db.artists.updateOne(
+  {_id:1},
+  {$push: {members: 'John Lennon 2'}}
+);
+
+db.artists.find();

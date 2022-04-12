@@ -1,0 +1,15 @@
+//Push each object
+use('colecaoCDs');
+
+db.artists.updateOne(
+  {_id:1},
+  {$push: {albums:{
+    $each:[
+      {title:'The Beatles', releaseYear:1968},
+      {title:'Rubber Soul', releaseYear:1965},
+      {title:'Let it be', releaseYear:1970},
+    ]
+  }}}
+);
+
+db.artists.find();

@@ -1,0 +1,9 @@
+//Push each
+use('colecaoCDs');
+
+db.artists.updateOne(
+  {_id:1},
+  {$push: {members: {$each:['Batman','Lex Luthor','Mulher Gavião']}}}
+);
+
+db.artists.find();

@@ -1,0 +1,15 @@
+//Position
+use('colecaoCDs');
+
+db.artists.updateOne(
+  {_id:1},
+  {$push: {members:{ $each: ['Batman do furuo'], $position:0  }}}
+);
+
+/* db.artists.updateOne(
+  {_id:1},
+  {$push: {members:{ $each: ['Super man','Atlas'], $position:1 }}} // Adiciona a partir da posição determinada
+); */
+
+
+db.artists.find();
