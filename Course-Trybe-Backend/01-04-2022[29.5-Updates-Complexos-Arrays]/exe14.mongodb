@@ -1,0 +1,10 @@
+use('colecaoCDs');
+
+db.artists.updateOne(
+  {_id:1},
+  {
+    $set:{'members.1':'Coringa'}
+  }
+)
+
+db.artists.find();
