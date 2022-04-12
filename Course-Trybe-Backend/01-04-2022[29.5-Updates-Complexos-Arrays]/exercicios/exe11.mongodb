@@ -1,0 +1,14 @@
+// addToSet - não deicar colocar valores repetidos no array de tipo primário
+
+use('colecaoCDs');
+db.artists.updateOne(
+  {_id:1},
+  {
+    $addToSet:{
+      members: {
+        $each:['Atlas', 'Batman','Mulher Maravilha']
+      }
+    }
+  }
+);
+db.artists.find({},{members:1});

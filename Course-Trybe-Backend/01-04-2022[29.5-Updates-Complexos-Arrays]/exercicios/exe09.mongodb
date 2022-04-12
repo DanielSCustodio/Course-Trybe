@@ -1,0 +1,15 @@
+//Pop
+
+use('colecaoCDs');
+
+db.artists.updateOne(
+  {_id:1},
+  {$pop: {albums: -1}}
+);
+db.artists.find({},{albums:-1}); //elimina o primeiro elemento do array
+
+/* db.artists.updateOne(
+  {_id:1},
+  {$pop: {albums: 1}}
+);
+db.artists.find({},{albums: 1}); //elimina o último elemento do array */

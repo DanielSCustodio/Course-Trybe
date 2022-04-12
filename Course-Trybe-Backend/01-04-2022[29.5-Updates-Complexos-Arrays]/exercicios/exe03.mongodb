@@ -1,0 +1,12 @@
+//Push object
+use('colecaoCDs');
+
+db.artists.updateOne(
+  {_id:1},
+  {$push: {albums:{
+    title: "New Album",
+    releaseYear:1967 
+  }}}
+);
+
+db.artists.find();

@@ -1,0 +1,8 @@
+use('colecaoCDs');
+db.artists.insertOne(
+  { 
+    _id:1, 
+    name:'The Beatles'
+  } 
+);
+

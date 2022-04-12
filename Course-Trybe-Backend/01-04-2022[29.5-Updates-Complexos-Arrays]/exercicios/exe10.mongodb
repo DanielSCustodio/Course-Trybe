@@ -1,0 +1,13 @@
+//Pull
+use('colecaoCDs');
+db.artists.updateOne(
+  {_id:1},          //condição de escolha do documento
+  {
+    $pull:{
+      albums:{   //escolha do atributo
+        releaseYear: {$lt:1967} // condição dos valores do atributos a serem deletados
+      }
+    }
+  }
+);
+db.artists.find();

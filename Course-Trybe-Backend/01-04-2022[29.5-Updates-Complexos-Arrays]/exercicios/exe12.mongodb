@@ -1,0 +1,20 @@
+
+//addToSet objeto
+use('colecaoCDs');
+db.artists.updateOne(
+  {_id:1},
+  { 
+    $addToSet:{
+      albums:{ //caso não exista o atributo então ele será criado
+        $each:[
+          {"title": "Album Agape", "releaseYear": 1985}, //a ordem e valores tem que ser exatamente iguais
+          { "title": "Laranja Melão","releaseYear": 1975},
+          { "title": "Laranjas e Melões","releaseYear": 2030},
+        ]
+      }
+    }
+  }
+);
+
+
+db.artists.find({},{albums: 1, _id:0});

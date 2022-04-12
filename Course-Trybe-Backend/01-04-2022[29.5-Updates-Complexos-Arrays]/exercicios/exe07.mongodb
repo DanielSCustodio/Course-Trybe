@@ -1,0 +1,36 @@
+//sort ordenação de array  que possui objetos como elementos
+use('colecaoCDs');
+
+db.artists.updateOne(
+  {_id:1},
+  {
+    $push:{
+      albums:{
+        $each:[
+          {title:'New Road', releaseYear:1969},
+          {title:'Metralha', releaseYear:1966},
+          {title:'Album Agape', releaseYear:1985},
+          {title:'Laranja Melão', releaseYear:1975},
+        ],
+        $sort :{releaseYear: -1}
+      }
+    }
+  }
+); 
+
+/* db.artists.updateOne(
+  {_id:1},
+  {
+    $push:{
+      albums:{
+        $each:[
+          {title:'Zatana Live', releaseYear:1969},
+          {title:'Kiko Kick', releaseYear:1966},
+        ],
+        $sort :{releaseYear: 1, title:1}
+      }
+    }
+  }
+);  */
+
+db.artists.find();
