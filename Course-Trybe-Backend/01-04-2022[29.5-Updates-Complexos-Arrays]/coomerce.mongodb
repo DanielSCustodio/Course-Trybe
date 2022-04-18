@@ -1,5 +1,5 @@
 use("commerce");
-/* db.produtos.find({},{});  */
+/* db.produtos.find({},{ _id:0});  */
 /* db.produtos.find().count(); */
 /* db.produtos.find({},{nome:1, vendidos:1, _id:0}).sort({vendidos:1}); */
 /* db.produtos.find({},{nome:1, vendidos:1, _id:0}).sort({vendidos:-1}).limit(1); */
@@ -35,3 +35,30 @@ db.produtos.find({},{nome:1, ingredientes:1, _id:0}); */
 /* db.produtos.updateOne({nome:"Quarteirão com Queijo"},
 {$pop:{ingredientes: -1}});
 db.produtos.find({},{nome:1, ingredientes:1, _id:0}); */
+/* 
+db.produtos.updateOne({nome:"Cheddar McMelt"},
+{$pop:{ingredientes: 1}});
+db.produtos.find({},{nome:1, ingredientes:1, _id:0});  */
+/* db.produtos.updateMany({},
+{$push:{vendasPorDia: {$each:[0,0,0,0,0,0,0]}}});
+db.produtos.updateMany({nome:"Big Mac"},{$inc: {"vendasPorDia.3":60}});
+db.produtos.updateMany({tags:"bovino"},{$inc: {"vendasPorDia.6":120}});
+db.produtos.find({},{nome:1, vendasPorDia:1, _id:0}); */
+/* db.produtos.updateMany({},{$push:{tags:{$each:["combo","tasty"],$sort:1}}});
+db.produtos.find({},{nome:1, tags:1, _id:0}); */
+/* db.produtos.updateMany({},{$push:{valoresNutricionais: {$each:[],$sort:{percentual:-1}}}});
+db.produtos.find({},{nome:1, valoresNutricionais:1, _id:0}); */
+/* db.produtos.updateMany({valoresNutricionais:{$elemMatch:{tipo:"sódio",percentual:{$gte:40}}}},
+{$push:{tags:"muito sódio"}});
+db.produtos.find({},{nome:1, tags:1, _id:0}); */
+/* db.produtos.updateMany({valoresNutricionais:{$elemMatch:{tipo:"sódio",percentual:{$gt:20,$lt:40}}}},
+{$push:{tags:"contém sódio"}});
+db.produtos.find({},{nome:1, tags:1, _id:0});  */
+/* db.produtos.find({nome:/Mc/i}).count(); */
+/* db.produtos.find({ingredientes:{$size:4}}).count(); */
+/* db.produtos.updateMany({},{$rename:{"descricao":"descricaoSite"}});
+db.produtos.find({},{nome:1, descricao:1, descricaoSite:1, _id:0}); */
+/* db.produtos.updateOne({nome:"Big Mac"},{$unset:{"curtidas":""}})
+db.produtos.find({},{nome:1, curtidas:1, _id:0}); */
+/* db.produtos.find({$expr:{$gt:["$curtidas","$vendidos"]}},{nome:1, _id:0}); */
+/* db.produtos.find({vendidos:{$mod:[5,0]}},{nome:1, vendidos:1, _id:0}); */
