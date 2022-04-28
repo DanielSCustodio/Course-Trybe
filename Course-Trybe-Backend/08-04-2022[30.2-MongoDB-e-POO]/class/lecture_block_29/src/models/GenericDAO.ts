@@ -1,9 +1,9 @@
 import { Model as M } from 'mongoose';
 
 export default class GenericDAO<T extends object> {
-  public model: M<T>;
+  public model: M<T>; // variavel:tipo
 
-  constructor(model: M<T>) {
+  constructor(model: M<T>) { // variavel:tipo
     this.model = model;
   }
 
