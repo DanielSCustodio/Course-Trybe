@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' /media/daniel/89ef5d38-9e92-4b84-9b1e-dfd95e017148/home/daniel/Documents/Cursos/Course-Trybe/Course-Trybe-CS/28-06-2022[33.1|Introducao-a-Python]/.ven/bin/python3 "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from setuptools.command.easy_install import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())
