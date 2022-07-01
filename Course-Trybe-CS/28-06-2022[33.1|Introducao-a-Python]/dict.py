@@ -12,6 +12,6 @@ people_by_id[1]  # saída: Maria
 del people_by_id[1]
 people_by_id.items()  # dict_items([(1, "Maria"), (2, "Fernanda"),
 # (3, "Felipe")])
-# um conjunto é retornado com tuplas contendo chaves e valores
+# items() retorna um conjunto é retornado com tuplas contendo chaves e valores
 
 print(people_by_name.items())
