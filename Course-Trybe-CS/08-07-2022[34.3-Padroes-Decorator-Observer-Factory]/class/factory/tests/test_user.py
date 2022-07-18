@@ -3,11 +3,12 @@ from model.user import User
 
 
 def test_create_user():
-    user = User("daniel@daniel.com", "Daniel", "123")
+    user = User("daniel@daniel.com", "Daniel", "123", "Brazil")
 
     assert user.email == "daniel@daniel.com"
     assert user.name == "Daniel"
     assert user.password == "123"
+    assert user.nationality == "Brazil"
 
 
 def test_login():

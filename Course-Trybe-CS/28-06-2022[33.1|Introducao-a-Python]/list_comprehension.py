@@ -6,8 +6,6 @@ restaurants = [
 ]
 
 min_rating = 3.0
-filter_restaurants = [i["name"]
-                      for i in restaurants
-                      if i["nota"] > min_rating]
+filter_restaurants = [i["name"] for i in restaurants if i["nota"] > min_rating]
 
 print(filter_restaurants)

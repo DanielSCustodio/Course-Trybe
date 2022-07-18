@@ -11,3 +11,4 @@ class UserFactory(factory.Factory):
     name = factory.Faker("name")
     email = factory.Faker("email")
     password = factory.Faker("word")
+    nationality = factory.Faker("country")
