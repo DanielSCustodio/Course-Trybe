@@ -14,7 +14,7 @@ def fetch_html(url):
     return res.text
 
 
-def parse_quotes_html(html_content):
+def get_data_html(html_content):
     result = []
     selector = Selector(html_content)
     for container in selector.css("div.col-md-8 > div.quote"):
@@ -23,7 +23,7 @@ def parse_quotes_html(html_content):
         tags = container.css("div.tags a.tag ::text").getall()
         quote_dict = {"content":content, "author": author, "tags":tags}
         result.append(quote_dict)
-    return result
+    return result #retorna um lista
 
 
 def parse_next_url(html_content):
@@ -33,12 +33,13 @@ def parse_next_url(html_content):
 
 def scrape_all_quotes():  
     base_url = "https://quotes.toscrape.com"
-    next_url_path = "/"
+    next_url_path = "/" # só recebe esse valor uma vez
+    list_data = []
 
-    quotes_data = []
     while next_url_path:
-        quotes_html = fetch_html(base_url + next_url_path)
-        quotes_data.extend(parse_quotes_html(quotes_html))
-        next_url_path = parse_next_url(quotes_html)
+        get_html = fetch_html(base_url + next_url_path) #pega html da pagina
+        list_data.extend(get_data_html(get_html)) # pega os dados contidos no html da pagina e coloca no list
+        # extend permite que somente os dados de um list sejam acrescidos dentro de outro list, sem acrescer a esturura inteira do list acrescido
+        next_url_path = parse_next_url(get_html)
 
-    return quotes_data
+    return list_data
