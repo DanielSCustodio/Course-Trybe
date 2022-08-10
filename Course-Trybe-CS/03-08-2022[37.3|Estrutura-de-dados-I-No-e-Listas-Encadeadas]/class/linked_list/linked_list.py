@@ -8,7 +8,7 @@ class LinkedList:
         self.__length = 0
 
     def __str__(self):
-        return f"LinkedList(len={self.__length}, value={self.head_value})"
+        return f"LinkedList(len={self.__length}, head={self.head_value})"
 
     def __len__(self):
         return self.__length
@@ -102,7 +102,7 @@ class LinkedList:
 
 
 # Para testar, apenas rode o arquivo com: `python3 linked_list_content.py` :)
-if __name__ == "__main__":
+""" if __name__ == "__main__":
     linked_list = LinkedList()
 
     print(linked_list.is_empty()) # saída: True
@@ -131,4 +131,4 @@ if __name__ == "__main__":
     linked_list.insert_at(7, 2)
     linked_list.insert_at(8, 3)
     linked_list.insert_at(9, 4)
-    print(linked_list.get_element_at(3)) # saída: Node(value=8 next=None)
+    print(linked_list.get_element_at(3)) # saída: Node(value=8 next=None) """
